@@ -1,0 +1,71 @@
+﻿	@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script>
+        $(document).ready(function () {
+            $("#btnsubmit").click(function () {
+                txtn = $("#txtname").val();
+                txte = $("#txtemail").val();
+                $.getJSON("/Home/InsertRecord", { n: txtn, c: txte }, function (msg) {
+
+                    if (msg == "success") {
+                        alert('Record Inserted Successfully');
+                    }
+                    else {
+                        alert('DataBase Error');
+                    }
+                });
+
+            });
+        });
+    </script>
+    
+</head>
+<body class="bg-success">
+    <div class="container mt-5 w-50 ">
+
+<div class="card text-light bg-dark p-3" >
+  <div class="card-body">
+    <h5 class="card-title text-center h1 text-info">My AJAX Db</h5>
+    <p class="card-text text-center" style="letter-spacing:8px;">Enter your details establish connection.</p>
+
+      <div>
+          
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" id="txtname" >
+    
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" id="txtemail">
+  </div>
+
+  <hr style="border:2px solid white" />
+  
+  <input id="btnsubmit" type="button" class="btn btn-primary w-100" value="Test AJAX Db"/>
+
+
+      </div>
+
+
+   
+  </div>
+</div>
+        
+        
+
+    </div>
+</body>
+</html>
